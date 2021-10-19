@@ -1,4 +1,4 @@
-# Drupal 8 Insert Inline SVG images.
+# Drupal 9 Insert Inline SVG images into CKEditor.
 
 This is a workaround module that supports inserting SVGs inline from CKEditor in Drupal 8. This module should in theory be redundant when https://www.drupal.org/node/1014816 is resolved.
 
