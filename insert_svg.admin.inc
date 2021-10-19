@@ -24,7 +24,7 @@ function insert_svg_upload_settings_form(Editor $editor) {
   $file_upload = $editor->getThirdPartySettings('insert_svg');
   $file_upload += [
     'status' => TRUE,
-    'scheme' => file_default_scheme(),
+    'scheme' => \Drupal::config('system.file')->get('default_scheme'),
     'directory' => 'inline-illustrations',
     'extensions' => 'svg',
     'max_size' => '',
@@ -86,7 +86,7 @@ function insert_svg_upload_settings_form(Editor $editor) {
     '#states' => $show_if_file_uploads_enabled,
   ];
 
-  $default_max_size = format_size(file_upload_max_size());
+  $default_max_size = format_size(\Drupal\Component\Utility\Environment::getUploadMaxSize());
   $form['max_size'] = [
     '#type' => 'textfield',
     '#default_value' => $file_upload['max_size'],
