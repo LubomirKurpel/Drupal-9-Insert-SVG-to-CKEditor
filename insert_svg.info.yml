@@ -9,4 +9,4 @@ dependencies:
   - filter
   - file
 configure: filter.admin_overview
-version: '8.x-1.0'
+version: '9.x-1.0'
