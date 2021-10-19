@@ -47,7 +47,9 @@ class InsertSvgDialog extends FormBase implements BaseFormIdInterface {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager')->getStorage('file')
+      $container->get('entity_type.manager')->getStorage('file'),
+      $container->get('entity.repository'),
+      $container->get('renderer')
     );
   }
 
@@ -100,7 +102,7 @@ class InsertSvgDialog extends FormBase implements BaseFormIdInterface {
     // Load dialog settings.
     $editor = editor_load($filter_format->id());
     $file_upload = $editor->getThirdPartySettings('insert_svg');
-    $max_filesize = min(Bytes::toInt($file_upload['max_size']), file_upload_max_size());
+    $max_filesize = min(Bytes::toInt($file_upload['max_size']), \Drupal\Component\Utility\Environment::getUploadMaxSize());
 
     $existing_file = isset($file_element['data-entity-uuid']) ? \Drupal::entityManager()->loadEntityByUuid('file', $file_element['data-entity-uuid']) : NULL;
     $fid = $existing_file ? $existing_file->id() : NULL;
