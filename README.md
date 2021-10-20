@@ -13,3 +13,5 @@ After saving a post with an inserted SVG, the editor will return to the built-in
 4. Drag the 'S' icon to the "Active toolbar".
 5. Configure the plugin settings in the vertical tabs above the toolbar
 Save.
+
+Currently tested on Drupal 9.2.7
